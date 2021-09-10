@@ -1,5 +1,5 @@
-/* /* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
-  License: none (public domain)
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain) */
 
 
 html, body, div, span, applet, object, iframe,
@@ -22,7 +22,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
- HTML5 display-role reset for older browsers 
+ /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
@@ -44,19 +44,19 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-} */
+} 
 
 body {
   background-color: #f2ead5;
 }
 
 .bar {
-  background-color: red;
   padding: 0;
   margin: 0;
   float: left;
   position: absolute;
   top: 350px;
+  z-index: 2;
 }
 
 .chart {
@@ -65,32 +65,25 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 25px;
-  height: 500px;
-  width: 500px;
   padding: 0;
   position: relative;
   vertical-align: text-bottom;
+  z-index: 1;
 }
 
-p {
-  position: relative;
-  top: 500px;
-  right: 50px;
-  background-color: green;
-  margin: 0px;
-  width: 2em;
-  height: 1em;
+.input {
+  color: black;
 }
 
 .grid {
-    border: 1px solid #ccc;
-    border-width: 1px 0 0 1px;
+  border: 1px solid #ccc;
+  border-width: 1px 0 0 1px;
 }
 
 .grid div {
-    border: 1px solid #ccc;
-    border-width: 0 1px 1px 0;
-    float: left;
+  border: 1px solid #ccc;
+  border-width: 0 1px 1px 0;
+  float: left;
 }
 
 h1 {
