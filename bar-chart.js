@@ -1,50 +1,48 @@
-function generateBarChart(data, options) {
-  setChartSize(options);
-  const barWidth = $("#bar-chart").width() / data.length / 2;
+function generateBarChart(data, options, element) {
+  const barWidth = $(element).width() / data.length / 2;
   const marginWidth = barWidth / 2;
-  const heightBar = $("#bar-chart").width() / Math.max(...data);
+  const heightBar = $(element).width() / Math.max(...data);
   let $element = "";
   for (let i = 1; i <= data.length; i++) {
-    $element = "<div id=\"" + i + "\" class=\"bar\"></div>";
-    $("#bar-chart").append($element);
-    $("#" + i).css({
+    $element = "<div id=\"" + options.labels[i - 1] + "\" class=\"bar\"></div>";
+    $(element).append($element);
+    $("#" + options.labels[i - 1]).css({
       "left": ((i + (i - 1)) * barWidth) - marginWidth + "px",
       "width": barWidth + "px",
       "height": data[i - 1] * heightBar + "px",
-      "top": $("#bar-chart").height() - data[i - 1] * heightBar + "px",
+      "top": $(element).height() - data[i - 1] * heightBar + "px",
       "background-color": "#" + Math.floor(Math.random() * 16777215).toString(16)
     });
-    //$("#bar-chart").append(<input type="color" id=);
+    $("#" + options.labels[i - 1]).append("<span>" + options.labels[i - 1] + "</span>")
   }
 }
 
 function drawBarChart(data, options, element) {
-  setChartSize(options);
-  generateBarChart(data, options);
+	setTitle(options.title);
+	setChartSize(options.xAxis, options.yAxis);
+  generateBarChart(data, options, element);
 }
 
-/*$(".input").keypress(function(event) {
-  if ( event.which == 13 ) {
-     event.preventDefault();
-     let $val = $(this).val();
-  }
-});*/
-
-function setChartSize(options) {
-  /*	let $height = $("#y-axis").val();
-    let $width = $("#x-axis").val();*/
+function setChartSize(x, y) {
   $(".chart").css({
-    "height": options[1] + "px",
-    "width": options[0] + "px"
+    "height": y + "px",
+    "width": x + "px"
   });
+}
+
+function setTitle(title) {
+	$("#title").text(title);
 }
 
 $("document").ready(function() {
   $("#bar-chart").on("click", ".bar", function() {
     const that = this;
-    $("#bar-color").attr({
+    $(".color-picker").attr({
       "type": "color",
-      "value": rgbToHex($(that).css("background-color"))
+      "value": rgbToHex($(that).css("background-color")),
+    });
+    $(".color-picker").css({"left": $(that).css("left"),
+														"top":  parseInt($(that).css("top"))- 30 + "px"
     });
   });
 });
@@ -69,5 +67,14 @@ function rgbToHex(rgb) {
   return "#" + r + g + b;
 }
 
+let data = [1,2,3,4,5,6,7,8];
 
-//generateBarChart([1,2,3,4,5,6,7,8,9,10]);
+let options = {
+	yAxis: 1000,
+  xAxis: 1000,
+  labels: ["Adam", "B", "C", "D", "E", "F", "G", "H"] ,
+  title: "Bar Chart"
+}
+
+let element = "#bar-chart";
+drawBarChart(data, options, element);

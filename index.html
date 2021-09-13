@@ -9,16 +9,18 @@
   </head>
   <body>
     <header>
-      <h1>Bar Chart</h1>
+      <h1 id="title">Bar Chart</h1>
     </header>
-    <figure id="bar-chart" class="chart"></figure>
-    <input class="color-picker" type="hidden" id="bar-color" name="bar-color">
-    <button id="generate-chart" onclick="generateBarChart([1,2,3,4,5], [500,500])">Generate Chart</button>
-    <form id="bar-options">
-      <label for="y-axis">y-axis size (in px): </label>
-      <input type="text" id="y-axis" name="y-axis" class="input"><br>
-      <label for="x-axis">x-axis size (in px): </label>
-      <input type="text" id="x-axis" name="x-axis" class="input"><br>
-    </form>
+    <figure id="bar-chart" class="chart">
+      <input class="color-picker" type="hidden" id="bar-color" name="bar-color">
+      <ul>
+        <li class="y-axis">
+          8
+        </li>
+      </ul>
+      <ul class="x-axis">
+        
+      </ul>
+    </figure>
   </body>
 </html>
